@@ -1,0 +1,44 @@
+{
+  "policyId": "ESI-2023",
+  "policyName": "Epidural Steroid Injection Coverage Policy",
+  "payer": "Sample Insurance",
+  "effectiveDate": "2023-01-01",
+  "criteria": [
+    {
+      "id": "c1",
+      "rule": "Pain duration > 3 months",
+      "description": "Patient must have documented pain for at least 3 months",
+      "required": true
+    },
+    {
+      "id": "c2",
+      "rule": "Failed conservative treatment",
+      "description": "Patient must have documented failure of at least 6 weeks of conservative treatment, including physical therapy and medication management",
+      "required": true
+    },
+    {
+      "id": "c3",
+      "rule": "Documented physical exam findings",
+      "description": "Physical examination findings must be consistent with the diagnosis",
+      "required": true
+    },
+    {
+      "id": "c4",
+      "rule": "Imaging confirms pathology",
+      "description": "Imaging studies (MRI, CT) must demonstrate pathology consistent with the clinical findings",
+      "required": true
+    },
+    {
+      "id": "c5",
+      "rule": "Pain scale documentation",
+      "description": "Pain severity must be documented using a standard pain scale",
+      "required": false
+    },
+    {
+      "id": "c6",
+      "rule": "Functional impairment documented",
+      "description": "Documentation of how the pain affects activities of daily living",
+      "required": false
+    }
+  ]
+}
