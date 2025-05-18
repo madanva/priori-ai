@@ -88,7 +88,7 @@ export default function HomeLandingPage() {
             </div>
             <div className="flex justify-between items-center">
               <h3 className="text-xl font-medium">Priori AI Demo</h3>
-              <span className="text-gray-500">Healthcare Innovation</span>
+              <span className="text-gray-500"></span>
             </div>
             <p className="text-gray-600 mt-2">See the dual-agent workflow and EHR integration in action</p>
           </div>
@@ -290,7 +290,7 @@ export default function HomeLandingPage() {
           </div>
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500">
             <p>© {new Date().getFullYear()} Priori AI. All rights reserved.</p>
-            <p className="mt-2">Built with ❤️ by Stanford students</p>
+
           </div>
         </div>
       </footer>
