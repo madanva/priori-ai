@@ -5,12 +5,7 @@
 
 Priori AI simplifies prior authorization by bringing AI to the point of care – but with a crucial difference. Our solution runs locally on physicians' devices, ensuring patient data stays private while dramatically improving the efficiency of insurance approval workflows.
 
-<p align="center">
-  <a href="https://youtu.be/5Ao21gUYBT4">
-  </a>
-</p>
-
-▶️ [Watch the demo](https://github.com/youruser/yourrepo/blob/main/PrioriAI_Demo_8VC_Hackathon.mp4)
+[![Demo Video]([https://langfuse.com/watch-demo](https://youtu.be/5Ao21gUYBT4))
 
 <!-- Put Video Here --> <!-- Put draw.io diagram here -->
 
