@@ -6,18 +6,23 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "mock-server": "json-server --watch mock-db.json --port 3001"
   },
   "dependencies": {
+    "@ahryman40k/ts-fhir-types": "^4.0.39",
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-popover": "^1.0.7",
     "@radix-ui/react-progress": "^1.0.3",
     "@radix-ui/react-slot": "^1.0.2",
+    "@radix-ui/react-tabs": "^1.1.11",
     "@radix-ui/react-toast": "^1.1.5",
+    "@types/fhir": "^0.0.41",
     "@vitejs/plugin-react": "^4.2.1",
     "autoprefixer": "^10.4.16",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
+    "fhirclient": "^2.5.5",
     "framer-motion": "^10.16.4",
     "lucide-react": "^0.292.0",
     "postcss": "^8.4.31",
@@ -35,9 +40,11 @@
     "zustand": "^4.4.6"
   },
   "devDependencies": {
+    "@types/json-server": "^0.14.8",
     "@types/node": "^20.9.0",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
+    "json-server": "^1.0.0-beta.3",
     "typescript": "^5.0.2"
   }
 }

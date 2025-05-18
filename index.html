@@ -9,6 +9,12 @@
   </head>
   <body>
     <div id="root"></div>
+    <!-- Cerner SMART on FHIR Client -->
+    <script src="https://cdn.jsdelivr.net/npm/fhirclient/build/fhir-client.js"></script>
+    <script>
+      // Initialize the FHIR client
+      window.FHIR.oauth2.settings.replaceBrowserHistory = true;
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

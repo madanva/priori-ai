@@ -1,0 +1,568 @@
+{
+  "Patient": [
+    {
+      "resourceType": "Patient",
+      "id": "12724066",
+      "identifier": [
+        {
+          "system": "http://hospital.smarthealthit.org",
+          "value": "12724066"
+        }
+      ],
+      "name": [
+        {
+          "use": "official",
+          "family": "Smith",
+          "given": ["John"]
+        }
+      ],
+      "gender": "male",
+      "birthDate": "1985-03-21",
+      "telecom": [
+        {
+          "system": "phone",
+          "value": "(555) 987-6543",
+          "use": "mobile"
+        },
+        {
+          "system": "phone",
+          "value": "(555) 456-7890",
+          "use": "home"
+        },
+        {
+          "system": "email",
+          "value": "emily.anderson@example.com"
+        }
+      ],
+      "address": [
+        {
+          "use": "home",
+          "line": ["742 Evergreen Terrace", "Apartment 3B"],
+          "city": "Boston",
+          "state": "MA",
+          "postalCode": "02115",
+          "country": "USA"
+        },
+        {
+          "use": "work",
+          "line": ["100 Technology Square"],
+          "city": "Cambridge",
+          "state": "MA",
+          "postalCode": "02142",
+          "country": "USA"
+        }
+      ],
+      "maritalStatus": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus",
+            "code": "M",
+            "display": "Married"
+          }
+        ],
+        "text": "Married"
+      },
+      "communication": [
+        {
+          "language": {
+            "coding": [
+              {
+                "system": "urn:ietf:bcp:47",
+                "code": "en",
+                "display": "English"
+              }
+            ],
+            "text": "English"
+          },
+          "preferred": true
+        },
+        {
+          "language": {
+            "coding": [
+              {
+                "system": "urn:ietf:bcp:47",
+                "code": "fr",
+                "display": "French"
+              }
+            ],
+            "text": "French"
+          },
+          "preferred": false
+        }
+      ],
+      "contact": [
+        {
+          "relationship": [
+            {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0131",
+                  "code": "C",
+                  "display": "Emergency Contact"
+                }
+              ]
+            }
+          ],
+          "name": {
+            "family": "Sharma",
+            "given": ["Priya"],
+            "text": "Priya Sharma (Sister)"
+          },
+          "telecom": [
+            {
+              "system": "phone",
+              "value": "(555) 987-6543",
+              "use": "mobile"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "Observation": [
+    {
+      "resourceType": "Observation",
+      "id": "1",
+      "status": "final",
+      "code": {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "8302-2",
+            "display": "Body height"
+          }
+        ],
+        "text": "Height"
+      },
+      "subject": {
+        "reference": "Patient/12724066"
+      },
+      "effectiveDateTime": "2025-05-15T10:00:00-07:00",
+      "valueQuantity": {
+        "value": 175,
+        "unit": "cm",
+        "system": "http://unitsofmeasure.org",
+        "code": "cm"
+      }
+    },
+    {
+      "resourceType": "Observation",
+      "id": "2",
+      "status": "final",
+      "code": {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "29463-7",
+            "display": "Body weight"
+          }
+        ],
+        "text": "Weight"
+      },
+      "subject": {
+        "reference": "Patient/12724066"
+      },
+      "effectiveDateTime": "2025-05-15T10:00:00-07:00",
+      "valueQuantity": {
+        "value": 70,
+        "unit": "kg",
+        "system": "http://unitsofmeasure.org",
+        "code": "kg"
+      }
+    },
+    {
+      "resourceType": "Observation",
+      "id": "3",
+      "status": "final",
+      "code": {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "39156-5",
+            "display": "Body mass index (BMI)"
+          }
+        ],
+        "text": "BMI"
+      },
+      "subject": {
+        "reference": "Patient/12724066"
+      },
+      "effectiveDateTime": "2025-05-15T10:00:00-07:00",
+      "valueQuantity": {
+        "value": 22.9,
+        "unit": "kg/m2",
+        "system": "http://unitsofmeasure.org",
+        "code": "kg/m2"
+      }
+    },
+    {
+      "resourceType": "Observation",
+      "id": "4",
+      "status": "final",
+      "code": {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "8462-4",
+            "display": "Blood pressure"
+          }
+        ],
+        "text": "Blood Pressure"
+      },
+      "subject": {
+        "reference": "Patient/12724066"
+      },
+      "effectiveDateTime": "2025-05-17T09:30:00-07:00",
+      "component": [
+        {
+          "code": {
+            "coding": [
+              {
+                "system": "http://loinc.org",
+                "code": "8480-6",
+                "display": "Systolic blood pressure"
+              }
+            ],
+            "text": "Systolic"
+          },
+          "valueQuantity": {
+            "value": 120,
+            "unit": "mmHg",
+            "system": "http://unitsofmeasure.org",
+            "code": "mm[Hg]"
+          }
+        },
+        {
+          "code": {
+            "coding": [
+              {
+                "system": "http://loinc.org",
+                "code": "8462-4",
+                "display": "Diastolic blood pressure"
+              }
+            ],
+            "text": "Diastolic"
+          },
+          "valueQuantity": {
+            "value": 80,
+            "unit": "mmHg",
+            "system": "http://unitsofmeasure.org",
+            "code": "mm[Hg]"
+          }
+        }
+      ]
+    },
+    {
+      "resourceType": "Observation",
+      "id": "5",
+      "status": "final",
+      "code": {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "2339-0",
+            "display": "Glucose"
+          }
+        ],
+        "text": "Fasting Glucose"
+      },
+      "subject": {
+        "reference": "Patient/12724066"
+      },
+      "effectiveDateTime": "2025-05-10T08:00:00-07:00",
+      "valueQuantity": {
+        "value": 110,
+        "unit": "mg/dL",
+        "system": "http://unitsofmeasure.org",
+        "code": "mg/dL"
+      },
+      "referenceRange": [
+        {
+          "low": {
+            "value": 70,
+            "unit": "mg/dL"
+          },
+          "high": {
+            "value": 99,
+            "unit": "mg/dL"
+          }
+        }
+      ]
+    },
+    {
+      "resourceType": "Observation",
+      "id": "6",
+      "status": "final",
+      "code": {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "4548-4",
+            "display": "Hemoglobin A1c"
+          }
+        ],
+        "text": "Hemoglobin A1c"
+      },
+      "subject": {
+        "reference": "Patient/12724066"
+      },
+      "effectiveDateTime": "2025-05-10T08:00:00-07:00",
+      "valueQuantity": {
+        "value": 6.2,
+        "unit": "%",
+        "system": "http://unitsofmeasure.org",
+        "code": "%"
+      },
+      "referenceRange": [
+        {
+          "high": {
+            "value": 5.7,
+            "unit": "%"
+          }
+        }
+      ]
+    },
+    {
+      "resourceType": "Observation",
+      "id": "7",
+      "status": "final",
+      "code": {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "2085-9",
+            "display": "Cholesterol in LDL"
+          }
+        ],
+        "text": "LDL Cholesterol"
+      },
+      "subject": {
+        "reference": "Patient/12724066"
+      },
+      "effectiveDateTime": "2025-05-10T08:00:00-07:00",
+      "valueQuantity": {
+        "value": 130,
+        "unit": "mg/dL",
+        "system": "http://unitsofmeasure.org",
+        "code": "mg/dL"
+      },
+      "referenceRange": [
+        {
+          "high": {
+            "value": 100,
+            "unit": "mg/dL"
+          }
+        }
+      ]
+    },
+    {
+      "resourceType": "Observation",
+      "id": "8",
+      "status": "final",
+      "code": {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "2160-0",
+            "display": "Creatinine"
+          }
+        ],
+        "text": "Serum Creatinine"
+      },
+      "subject": {
+        "reference": "Patient/12724066"
+      },
+      "effectiveDateTime": "2025-05-10T08:00:00-07:00",
+      "valueQuantity": {
+        "value": 1.1,
+        "unit": "mg/dL",
+        "system": "http://unitsofmeasure.org",
+        "code": "mg/dL"
+      },
+      "referenceRange": [
+        {
+          "low": {
+            "value": 0.7,
+            "unit": "mg/dL"
+          },
+          "high": {
+            "value": 1.3,
+            "unit": "mg/dL"
+          }
+        }
+      ]
+    }
+  ],
+  "Condition": [
+    {
+      "resourceType": "Condition",
+      "id": "123456",
+      "clinicalStatus": {
+        "coding": [
+          {
+            "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+            "code": "active",
+            "display": "Active"
+          }
+        ],
+        "text": "Active"
+      },
+      "category": [
+        {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+              "code": "problem-list-item",
+              "display": "Problem List Item"
+            }
+          ],
+          "text": "Cardiac"
+        }
+      ],
+      "code": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "241620005",
+            "display": "Myocardial perfusion imaging"
+          }
+        ],
+        "text": "Myocardial Perfusion Imaging Test"
+      },
+      "subject": {
+        "reference": "Patient/12724066"
+      },
+      "onsetDateTime": "2024-09-15",
+      "recordedDate": "2024-09-20",
+      "severity": {
+        "coding": [
+          {
+            "system": "http://snomed.info/sct",
+            "code": "6736007",
+            "display": "Moderate"
+          }
+        ],
+        "text": "Moderate"
+      },
+      "note": [
+        {
+          "text": "A myocardial perfusion imaging test, also known as a nuclear stress test, is a diagnostic tool that uses a radioactive tracer to visualize how blood flows to the heart muscle (myocardium). It's used to detect coronary artery disease (CAD), evaluate heart function, and assess the effectiveness of treatments for CAD. A small amount of radioactive tracer (radionuclide) was injected into the bloodstream through a vein in the arm."
+        }
+      ]
+    }
+  ],
+  "DiagnosticReport": [
+    {
+      "resourceType": "DiagnosticReport",
+      "id": "1",
+      "status": "final",
+      "code": {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "78812-6",
+            "display": "Myocardial perfusion imaging test"
+          }
+        ],
+        "text": "Myocardial Perfusion Imaging Test"
+      },
+      "subject": {
+        "reference": "Patient/12724066"
+      },
+      "effectiveDateTime": "2025-05-10T08:30:00-07:00",
+      "issued": "2025-05-10T14:45:00-07:00",
+      "conclusion": "Myocardial perfusion imaging reveals mild perfusion defect in the inferolateral wall, suggestive of possible coronary artery disease. Further cardiac evaluation recommended. No significant left ventricular dysfunction observed.",
+      "result": [
+        {
+          "reference": "Observation/10",
+          "display": "Left Ventricular Ejection Fraction: 55% (Reference Range: 55-70%)"
+        },
+        {
+          "reference": "Observation/11",
+          "display": "Myocardial Perfusion Defect: Mild (Reference Range: None)"
+        },
+        {
+          "reference": "Observation/12",
+          "display": "Stress Test Duration: 9 minutes (Reference Range: >9 minutes)"
+        },
+        {
+          "reference": "Observation/13",
+          "display": "ST-segment Depression: 1mm (Reference Range: <1mm)"
+        }
+      ]
+    }
+  ],
+  "MedicationRequest": [
+    {
+      "resourceType": "MedicationRequest",
+      "id": "1",
+      "status": "active",
+      "intent": "order",
+      "medicationCodeableConcept": {
+        "coding": [
+          {
+            "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+            "code": "6809",
+            "display": "Metformin"
+          }
+        ],
+        "text": "Metformin"
+      },
+      "subject": {
+        "reference": "Patient/12724066"
+      },
+      "authoredOn": "2023-01-20",
+      "requester": {
+        "reference": "Practitioner/1",
+        "display": "Dr. Sarah Johnson"
+      },
+      "dosageInstruction": [
+        {
+          "text": "Take one tablet by mouth twice daily with meals.",
+          "timing": {
+            "repeat": {
+              "frequency": 2,
+              "period": 1,
+              "periodUnit": "d"
+            }
+          },
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "26643006",
+                "display": "Oral route"
+              }
+            ],
+            "text": "Oral"
+          },
+          "doseAndRate": [
+            {
+              "doseQuantity": {
+                "value": 500,
+                "unit": "mg",
+                "system": "http://unitsofmeasure.org",
+                "code": "mg"
+              }
+            }
+          ]
+        }
+      ],
+      "dispenseRequest": {
+        "numberOfRepeatsAllowed": 5,
+        "quantity": {
+          "value": 60,
+          "unit": "tablets",
+          "system": "http://unitsofmeasure.org",
+          "code": "tbl"
+        },
+        "expectedSupplyDuration": {
+          "value": 30,
+          "unit": "days",
+          "system": "http://unitsofmeasure.org",
+          "code": "d"
+        }
+      }
+    }
+  ]
+}
