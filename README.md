@@ -7,7 +7,6 @@ Priori AI simplifies prior authorization by bringing AI to the point of care –
 
 <p align="center">
   <a href="https://youtu.be/5Ao21gUYBT4">
-    <img src="https://img.youtube.com/vi/5Ao21gUYBT4/0.jpg" alt="Watch the Demo!" width="600"/>
   </a>
 </p>
 
