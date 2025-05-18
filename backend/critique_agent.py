@@ -12,26 +12,10 @@ import uuid
 import re
 from typing import Dict, Any, List, Optional, Tuple
 
-def check_ollama_available(host: str = "http://localhost:11434") -> bool:
-    """
-    Check if Ollama is available at the specified host.
-    
-    Args:
-        host: The Ollama host URL
-        
-    Returns:
-        bool: True if Ollama is available, False otherwise
-    """
-    try:
-        response = requests.get(f"{host}/api/version", timeout=5)
-        return response.status_code == 200
-    except Exception:
-        return False
-
 class CritiqueAgent:
     """
     A critique agent for evaluating healthcare prior authorization documents
-    using LLM models via Ollama or a mock implementation when Ollama is not available.
+    using LLM models via Ollama.
     """
     
     def __init__(
@@ -54,9 +38,6 @@ class CritiqueAgent:
         self.model_name = model_name
         self.timeout = timeout
         self.sessions = {}
-        
-        # Check if Ollama is available
-        self.ollama_available = check_ollama_available(ollama_host)
         
         # If no retriever provided, use the dummy one
         self.guidelines_retriever = guidelines_retriever or self._dummy_retriever
@@ -277,20 +258,14 @@ IMPORTANT GUIDELINES TO APPLY:
             {"role": "user", "content": prompt}
         ]
         
-        # Check if Ollama is available
-        if not self.ollama_available:
-            # Provide a mock response when Ollama is not available
-            print("Ollama not available, using mock response")
-            error = "Ollama service not available in this environment"
-        else:
-            # Call Ollama API
-            response_data, error = self._call_ollama_api(
-                ollama_messages,
-                temperature=temperature
-            )
+        # Call Ollama API
+        response_data, error = self._call_ollama_api(
+            ollama_messages,
+            temperature=temperature
+        )
         
         # Handle errors with a fallback response
-        if error or not self.ollama_available:
+        if error:
             print(f"Error during critique: {error}")
             return {
                 "approval_likelihood": 0.65,
