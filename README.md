@@ -55,9 +55,9 @@ Priori AI significantly improves the prior authorization process for procedures 
 ## Team
 
 - **Varun Madan**: Stanford Engineering
-- **Jeff Liu**: Stanford Engineering
 - **Madhuhaas Gottimukkala**: Stanford Engineering
 - **Krish Sharma**: Stanford Engineering
+- **Jeff Liu**: Stanford Engineering
 
 ## Getting Started
 
