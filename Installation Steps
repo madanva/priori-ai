@@ -1,0 +1,48 @@
+Installation Steps for Priori AI (Mac)
+
+Unzip the downloaded file
+
+Double-click the downloaded zip file
+A folder named "priori-ai-users" will be created
+
+
+Open Terminal
+
+Open Terminal from Applications → Utilities → Terminal
+Navigate to the extracted folder:
+cd path/to/priori-ai-users
+
+
+
+Install dependencies
+
+Using pnpm (recommended):
+pnpm install
+
+Or using npm:
+npm install
+
+Start the application
+
+Using pnpm:
+pnpm dev
+
+Or using npm:
+npm run dev
+
+
+
+Set up EHR connection
+
+Within the application, select your EHR system (Epic or Cerner)
+Enter connection credentials when prompted
+Follow on-screen instructions to complete setup
+
+
+Try your first authorization
+
+Select a patient record
+Choose a procedure requiring authorization
+Let Priori AI guide you through the optimized authorization process
+
+
