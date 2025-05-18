@@ -10,7 +10,7 @@ Priori AI simplifies prior authorization by bringing AI to the point of care –
   </a>
 </p>
 
-<video src="PrioriAI_Demo_8VC_Hackathon.mp4" controls width="600"></video>
+▶️ [Watch the demo](https://github.com/youruser/yourrepo/blob/main/PrioriAI_Demo_8VC_Hackathon.mp4)
 
 <!-- Put Video Here --> <!-- Put draw.io diagram here -->
 
