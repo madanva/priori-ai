@@ -5,9 +5,7 @@
 
 Priori AI simplifies prior authorization by bringing AI to the point of care – but with a crucial difference. Our solution runs locally on physicians' devices, ensuring patient data stays private while dramatically improving the efficiency of insurance approval workflows.
 
-<p align="center">
-  <img src="https://github.com/madanva/8VC-hackathon/issues/2#issue-3071441486" alt="Priori AI Flowchart" width="700"/>
-</p>
+![Image](https://github.com/user-attachments/assets/bd315ce2-fe0a-41dc-804d-1481178db269)
 
 
 [![Watch the demo](assets/thumbnail.png)](https://github.com/user-attachments/assets/0a7c7067-47fc-4ba3-9d34-136ed162692a)
