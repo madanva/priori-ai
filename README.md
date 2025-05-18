@@ -1,6 +1,6 @@
 # Priori AI
 **Local intelligence. Clinical confidence.**
-
+ 
 ## About Priori AI
 
 Priori AI simplifies prior authorization by bringing AI to the point of care – but with a crucial difference. Our solution runs locally on physicians' devices, ensuring patient data stays private while dramatically improving the efficiency of insurance approval workflows.
