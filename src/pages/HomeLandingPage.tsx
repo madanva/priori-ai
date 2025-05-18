@@ -38,7 +38,7 @@ export default function HomeLandingPage() {
           </a>
         </div>
         <Button variant="outline" className="hidden md:flex" asChild>
-          <a href="https://github.com/madanva/8VC-hackathon" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/madanva/priori-ai" target="_blank" rel="noopener noreferrer">
             <Github className="mr-2 h-4 w-4" />
             GitHub
           </a>
@@ -65,7 +65,7 @@ export default function HomeLandingPage() {
               Try Demo
             </Button>
             <Button variant="outline" className="border-[#1EBCBC] text-[#1EBCBC] hover:bg-[#e6f7f6]" asChild>
-              <a href="https://github.com/madanva/8VC-hackathon" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/madanva/priori-ai" target="_blank" rel="noopener noreferrer">
                 View GitHub Repository
               </a>
             </Button>
@@ -88,7 +88,7 @@ export default function HomeLandingPage() {
             </div>
             <div className="flex justify-between items-center">
               <h3 className="text-xl font-medium">Priori AI Demo</h3>
-              <span className="text-gray-500">8VC Hackathon</span>
+              <span className="text-gray-500">Healthcare Innovation</span>
             </div>
             <p className="text-gray-600 mt-2">See the dual-agent workflow and EHR integration in action</p>
           </div>
@@ -290,7 +290,7 @@ export default function HomeLandingPage() {
           </div>
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500">
             <p>© {new Date().getFullYear()} Priori AI. All rights reserved.</p>
-            <p className="mt-2">Built for the 8VC Hackathon</p>
+            <p className="mt-2">Built with ❤️ by Stanford students</p>
           </div>
         </div>
       </footer>
