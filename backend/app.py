@@ -47,15 +47,22 @@ logging.info(f"Ollama available: {OLLAMA_AVAILABLE}")
 def health_check():
     """Health check endpoint to verify the API is running."""
     logging.info("Health check endpoint called")
-    try:
-        # Try a simple call to Ollama to verify it's actually running
-        ollama.list()
-        logging.info("Ollama is running properly")
-        return jsonify({"status": "healthy", "message": "API is running with Ollama available"})
-    except Exception as e:
-        logging.warning(f"Ollama not available: {str(e)}")
-        # Return healthy status even without Ollama for deployment purposes
+    
+    # Always return healthy status for deployment purposes
+    # This ensures Render.com health checks pass even without Ollama
+    if OLLAMA_AVAILABLE:
+        try:
+            # Try a simple call to Ollama to verify it's actually running
+            ollama.list()
+            logging.info("Ollama is running properly")
+            return jsonify({"status": "healthy", "message": "API is running with Ollama available"})
+        except Exception as e:
+            logging.warning(f"Ollama connection failed: {str(e)}")
+            return jsonify({"status": "healthy", "message": "API is running (Ollama connection failed)"})
+    else:
+        logging.info("Ollama not available in this environment")
         return jsonify({"status": "healthy", "message": "API is running (Ollama not available)"})
+
 
 
 @app.route('/api/chat', methods=['POST'])
