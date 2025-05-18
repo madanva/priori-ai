@@ -212,30 +212,20 @@ export default function HomeLandingPage() {
             process for physicians everywhere.
           </p>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
-            {[
-              {
-                name: "Varun Madan",
-                role: "Backend Engineer"
-              },
-              {
-                name: "Nolan Gunter",
-                role: "Frontend Engineer"
-              },
-              {
-                name: "Tanya Sinha",
-                role: "ML Engineer"
-              },
-              {
-                name: "Sai Bommisetty",
-                role: "Product Manager"
-              },
-            ].map((member, index) => (
-              <div key={index} className="text-center p-6 bg-white rounded-lg shadow-sm border border-gray-100">
-                <h3 className="font-semibold text-lg mb-2">{member.name}</h3>
-                <p className="text-gray-600">{member.role}</p>
+          <div className="max-w-3xl mx-auto">
+            <p className="text-lg text-gray-600 mb-8">
+              Our team brings together expertise in healthcare, artificial intelligence, and software engineering to create innovative solutions for healthcare providers.
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="text-center p-6 bg-white rounded-lg shadow-sm border border-gray-100">
+                <h3 className="font-semibold text-lg mb-2">Engineering</h3>
+                <p className="text-gray-600">Full-stack development with React, TypeScript, and Node.js</p>
               </div>
-            ))}
+              <div className="text-center p-6 bg-white rounded-lg shadow-sm border border-gray-100">
+                <h3 className="font-semibold text-lg mb-2">AI & ML</h3>
+                <p className="text-gray-600">LLM integration and optimization for healthcare applications</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
