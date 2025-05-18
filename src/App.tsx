@@ -4,6 +4,7 @@ import { Routes, Route, useLocation } from "react-router-dom"
 import { AnimatePresence } from "framer-motion"
 import { HeaderBar } from "@/components/HeaderBar"
 import { StepSidebar } from "@/components/StepSidebar"
+import HomeLandingPage from "@/pages/HomeLandingPage"
 import LandingPage from "@/pages/LandingPage"
 import PredictionPage from "@/pages/PredictionPage"
 import SuggestionsPage from "@/pages/SuggestionsPage"
@@ -13,26 +14,40 @@ import ExportPage from "@/pages/ExportPage"
 
 function App() {
   const location = useLocation()
+  const isAppRoute = ["/landing", "/predict", "/suggest", "/draft", "/critique", "/export"].includes(location.pathname)
 
-  return (
-    <div className="flex h-screen bg-white font-inter text-[#333333]">
-      <StepSidebar />
-      <div className="flex flex-col flex-1 overflow-hidden">
-        <HeaderBar />
-        <main className="flex-1 overflow-auto bg-[#F8F9FA]">
-          <AnimatePresence mode="wait">
-            <Routes location={location} key={location.pathname}>
-              <Route path="/" element={<LandingPage />} />
-              <Route path="/predict" element={<PredictionPage />} />
-              <Route path="/suggest" element={<SuggestionsPage />} />
-              <Route path="/draft" element={<DraftPage />} />
-              <Route path="/critique" element={<CritiquePage />} />
-              <Route path="/export" element={<ExportPage />} />
-            </Routes>
-          </AnimatePresence>
-        </main>
+  // Render the application layout only for app routes
+  if (isAppRoute) {
+    return (
+      <div className="flex h-screen bg-white font-inter text-[#333333]">
+        <StepSidebar />
+        <div className="flex flex-col flex-1 overflow-hidden">
+          <HeaderBar />
+          <main className="flex-1 overflow-auto bg-[#F8F9FA]">
+            <AnimatePresence mode="wait">
+              <Routes location={location} key={location.pathname}>
+                <Route path="/landing" element={<LandingPage />} />
+                <Route path="/predict" element={<PredictionPage />} />
+                <Route path="/suggest" element={<SuggestionsPage />} />
+                <Route path="/draft" element={<DraftPage />} />
+                <Route path="/critique" element={<CritiquePage />} />
+                <Route path="/export" element={<ExportPage />} />
+              </Routes>
+            </AnimatePresence>
+          </main>
+        </div>
       </div>
-    </div>
+    )
+  }
+
+  // For the home page and any other routes, render without the app layout
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<HomeLandingPage />} />
+        <Route path="*" element={<HomeLandingPage />} />
+      </Routes>
+    </AnimatePresence>
   )
 }
 

@@ -1,18 +1,10 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+import ollama
 import os
 import time
 import logging
 from dotenv import load_dotenv
-
-# Import ollama conditionally to handle environments where it's not available
-try:
-    import ollama
-    OLLAMA_AVAILABLE = True
-except ImportError:
-    OLLAMA_AVAILABLE = False
-    logging.warning("Ollama package not available, using mock responses")
-
 from critique_agent import CritiqueAgent, check_ollama_available
 
 # Configure logging
@@ -33,15 +25,10 @@ CORS(app)  # Enable CORS for all routes
 # Default model to use if not specified
 DEFAULT_MODEL = os.getenv('OLLAMA_MODEL', 'llama3.2')
 
-# Check if Ollama is available
-OLLAMA_HOST = os.getenv('OLLAMA_HOST', 'http://localhost:11434')
-OLLAMA_AVAILABLE = OLLAMA_AVAILABLE and check_ollama_available(OLLAMA_HOST)
-
 # Initialize the critique agent
-critique_agent = CritiqueAgent(model_name=DEFAULT_MODEL, ollama_host=OLLAMA_HOST)
+critique_agent = CritiqueAgent(model_name=DEFAULT_MODEL)
 
 logging.info(f"Starting Flask app with default model: {DEFAULT_MODEL}")
-logging.info(f"Ollama available: {OLLAMA_AVAILABLE}")
 
 @app.route('/api/health', methods=['GET'])
 def health_check():
@@ -51,12 +38,10 @@ def health_check():
         # Try a simple call to Ollama to verify it's actually running
         ollama.list()
         logging.info("Ollama is running properly")
-        return jsonify({"status": "healthy", "message": "API is running with Ollama available"})
+        return jsonify({"status": "healthy", "message": "Ollama API is running"})
     except Exception as e:
-        logging.warning(f"Ollama not available: {str(e)}")
-        # Return healthy status even without Ollama for deployment purposes
-        return jsonify({"status": "healthy", "message": "API is running (Ollama not available)"})
-
+        logging.error(f"Ollama health check failed: {str(e)}")
+        return jsonify({"status": "unhealthy", "message": f"Ollama error: {str(e)}"}), 500
 
 @app.route('/api/chat', methods=['POST'])
 def chat_endpoint():
@@ -247,16 +232,9 @@ def analyze_clinical_note():
 def list_models():
     """Endpoint to list available Ollama models."""
     try:
-        if OLLAMA_AVAILABLE:
-            # This would require a different API call in the actual Ollama API
-            # For now, we'll return a simplified response
-            return jsonify({"models": [DEFAULT_MODEL]})
-        else:
-            # Return mock data when Ollama is not available
-            return jsonify({
-                "models": [DEFAULT_MODEL],
-                "note": "Using mock data, Ollama not available in this environment"
-            })
+        # This would require a different API call in the actual Ollama API
+        # For now, we'll return a simplified response
+        return jsonify({"models": [DEFAULT_MODEL]})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
