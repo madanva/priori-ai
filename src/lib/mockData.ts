@@ -177,6 +177,13 @@ export const mockSuggestions: Suggestion[] = [
     confidence: 60,
     description: "Document relevant physical examination findings",
   },
+  {
+    id: "s4",
+    rule: "Missing documentation of symptom duration",
+    status: "error",
+    confidence: 40,
+    description: "Need to clearly specify how long symptoms have been present",
+  },
 ]
 
 // Mock draft letter

@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { useStore } from "@/hooks/useStore"
 import { Combobox } from "@/components/ui/combobox"
+import { ToggleSwitch } from "@/components/ui/toggle-switch"
 import { Loader2 } from "lucide-react"
 
 export default function LandingPage() {
@@ -16,6 +17,7 @@ export default function LandingPage() {
   const [selectedPatientId, setSelectedPatientId] = useState<string>("")
   const [patientOptions, setPatientOptions] = useState<{ label: string; value: string }[]>([])
   const [searchTerm, setSearchTerm] = useState("")
+  const [isCernerSelected, setIsCernerSelected] = useState(true)
 
   // Handle search input
   useEffect(() => {
@@ -58,10 +60,18 @@ export default function LandingPage() {
         <CardHeader>
           <CardTitle className="text-center">
             <div className="h-16 w-16 bg-primary rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4">
-              AS
+              PI
             </div>
-            <span>AuthStream AI</span>
+            <span>Priori AI</span>
           </CardTitle>
+          <div className="mt-4">
+            <ToggleSwitch
+              leftOption="Cerner"
+              rightOption="Epic"
+              isLeftSelected={isCernerSelected}
+              onToggle={() => setIsCernerSelected(!isCernerSelected)}
+            />
+          </div>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">

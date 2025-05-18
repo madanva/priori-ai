@@ -8,9 +8,10 @@ import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { useStore } from "@/hooks/useStore"
-import { Loader2, Save, Eye, Edit2, Copy } from "lucide-react"
+import { Loader2, Save, Eye, Edit2, Copy, Check, RefreshCw, CheckSquare } from "lucide-react"
 import { useToast } from "@/components/ui/use-toast"
 import { mockDraftLetter } from "@/lib/mockData"
+import { reviseDraft, checkApiHealth } from "@/lib/ollamaService"
 
 export default function DraftPage() {
   const navigate = useNavigate()
@@ -21,6 +22,9 @@ export default function DraftPage() {
   const [isDiffView, setIsDiffView] = useState(false)
   const [originalDraft, setOriginalDraft] = useState("")
   const [editorContent, setEditorContent] = useState("")
+  const [revisionInstructions, setRevisionInstructions] = useState("Check and revise this draft for clarity, coherence, and correctness. Ensure it meets medical necessity criteria.")
+  const [isRevising, setIsRevising] = useState(false)
+  const [ollamaAvailable, setOllamaAvailable] = useState(false)
 
   useEffect(() => {
     if (!patient || !order) {
@@ -39,8 +43,13 @@ export default function DraftPage() {
         setOriginalDraft(generatedDraft)
         setEditorContent(generatedDraft)
         setDraft(generatedDraft)
+
+        // Check if Ollama API is available
+        const isAvailable = await checkApiHealth()
+        setOllamaAvailable(isAvailable)
       } catch (error) {
         console.error("Error generating draft:", error)
+        setOllamaAvailable(false)
       } finally {
         setIsLoading(false)
       }
@@ -56,7 +65,15 @@ export default function DraftPage() {
   }
 
   const handleContinue = () => {
+    // Save the current draft
+    setDraft(editorContent)
     navigate("/export")
+  }
+  
+  const handleCritique = () => {
+    // Save the current draft and go to critique page
+    setDraft(editorContent)
+    navigate("/critique")
   }
 
   const togglePreview = () => {
@@ -76,6 +93,34 @@ export default function DraftPage() {
       description: "The draft has been copied to your clipboard",
       variant: "success",
     })
+  }
+
+  const handleReviseWithOllama = async () => {
+    if (!draft) return
+    
+    setIsRevising(true)
+    try {
+      const response = await reviseDraft(draft, revisionInstructions)
+      
+      // Update the editor content and draft with the revised version
+      setEditorContent(response.revised)
+      setDraft(response.revised)
+      
+      toast({
+        title: "Draft revised",
+        description: "The draft has been revised using Ollama",
+        variant: "success",
+      })
+    } catch (error) {
+      console.error("Error revising draft:", error)
+      toast({
+        title: "Revision failed",
+        description: "Failed to revise the draft. Please try again.",
+        variant: "destructive",
+      })
+    } finally {
+      setIsRevising(false)
+    }
   }
 
   // Simple diff view (in a real app, you'd use a proper diff library)
@@ -146,8 +191,18 @@ export default function DraftPage() {
       </div>
 
       <Card className="mb-6">
-        <CardHeader>
+        <CardHeader className="flex flex-row items-center justify-between">
           <CardTitle className="text-lg">Authorization Letter</CardTitle>
+          {ollamaAvailable ? (
+            <span className="text-xs flex items-center text-green-600">
+              <Check className="h-3 w-3 mr-1" />
+              Ollama Available
+            </span>
+          ) : (
+            <span className="text-xs text-amber-600">
+              Ollama Unavailable
+            </span>
+          )}
         </CardHeader>
         <CardContent>
           {isPreview ? (
@@ -155,12 +210,51 @@ export default function DraftPage() {
           ) : isDiffView ? (
             renderDiff()
           ) : (
-            <textarea className="editor-content w-full" value={editorContent} onChange={handleEditorChange} />
+            <>
+              <textarea 
+                className="editor-content w-full min-h-[400px] p-4 border rounded-md" 
+                value={editorContent} 
+                onChange={handleEditorChange} 
+              />
+              <div className="mt-4">
+                <h3 className="text-sm font-medium mb-2">Revision Instructions</h3>
+                <textarea 
+                  className="w-full p-2 border rounded-md text-sm" 
+                  value={revisionInstructions}
+                  onChange={(e) => setRevisionInstructions(e.target.value)}
+                  placeholder="Instructions for Ollama to revise the draft..."
+                  rows={2}
+                />
+              </div>
+            </>
           )}
         </CardContent>
       </Card>
 
-      <div className="flex justify-end">
+      <div className="flex justify-end gap-2">
+        {ollamaAvailable && (
+          <Button 
+            variant="outline" 
+            onClick={handleReviseWithOllama} 
+            disabled={isRevising}
+          >
+            {isRevising ? (
+              <>
+                <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                Revising...
+              </>
+            ) : (
+              <>
+                <RefreshCw className="h-4 w-4 mr-2" />
+                Revise with Ollama
+              </>
+            )}
+          </Button>
+        )}
+        <Button variant="outline" onClick={handleCritique}>
+          <CheckSquare className="h-4 w-4 mr-2" />
+          Analyze Approval Chances
+        </Button>
         <Button onClick={handleContinue}>
           <Save className="h-4 w-4 mr-2" />
           Continue to Export

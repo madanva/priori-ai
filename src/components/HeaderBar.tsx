@@ -3,8 +3,9 @@
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { useStore } from "@/hooks/useStore"
-import { Wifi, WifiOff, RotateCcw } from "lucide-react"
+import { Cpu, HardDrive, RotateCcw, User } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { Logo } from "@/components/Logo"
 
 export function HeaderBar() {
   const navigate = useNavigate()
@@ -29,34 +30,43 @@ export function HeaderBar() {
   }
 
   return (
-    <header className="h-16 border-b border-border flex items-center justify-between px-4 bg-white">
+    <header className="h-16 border-b border-[#E9ECEF] flex items-center justify-between px-6 bg-white shadow-sm">
       <div className="flex items-center">
-        <h1 className="text-xl font-semibold text-primary">AuthStream AI</h1>
+        <Logo size="small" withText={true} />
         {patient && (
-          <div className="ml-4 pl-4 border-l border-border">
-            <span className="text-sm text-text-secondary">Patient:</span>
-            <span className="ml-2 font-medium">{patient.name}</span>
-            <span className="ml-2 text-sm text-text-secondary">DOB: {patient.dob}</span>
+          <div className="ml-6 pl-6 border-l border-[#E9ECEF] flex items-center">
+            <div className="bg-[#1EBCBC]/10 p-1.5 rounded-full mr-2">
+              <User className="w-4 h-4 text-[#1EBCBC]" />
+            </div>
+            <div>
+              <span className="text-[#333333] font-medium">{patient.name}</span>
+              <span className="ml-2 text-xs text-[#6C757D]">DOB: {patient.dob}</span>
+            </div>
           </div>
         )}
       </div>
       <div className="flex items-center gap-4">
         <div className="flex items-center">
           {isOnline ? (
-            <div className="flex items-center text-success">
-              <Wifi className="w-4 h-4 mr-1" />
-              <span className="text-xs">Online</span>
+            <div className="flex items-center text-[#4CAF50] bg-[#4CAF50]/10 px-2 py-1 rounded-full">
+              <Cpu className="w-3.5 h-3.5 mr-1" />
+              <span className="text-xs font-medium">On Device</span>
             </div>
           ) : (
-            <div className="flex items-center text-error">
-              <WifiOff className="w-4 h-4 mr-1" />
-              <span className="text-xs">Offline</span>
+            <div className="flex items-center text-[#F44336] bg-[#F44336]/10 px-2 py-1 rounded-full">
+              <HardDrive className="w-3.5 h-3.5 mr-1" />
+              <span className="text-xs font-medium">Not On Device</span>
             </div>
           )}
         </div>
-        <Button variant="ghost" size="sm" onClick={handleReset} className="flex items-center">
-          <RotateCcw className="w-4 h-4 mr-1" />
-          <span>Reset</span>
+        <Button 
+          variant="ghost" 
+          size="sm" 
+          onClick={handleReset}
+          className="text-[#A0A0A0] hover:text-white hover:bg-[#333] transition-colors"
+        >
+          <RotateCcw className="w-3.5 h-3.5 mr-1" />
+          Reset
         </Button>
       </div>
     </header>

@@ -5,19 +5,19 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-highlight focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1EBCBC]/50 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
-        default: "bg-primary text-white hover:bg-primary/90",
-        destructive: "bg-error text-white hover:bg-error/90",
-        outline: "border border-border bg-white hover:bg-background hover:text-primary",
-        secondary: "bg-background text-text hover:bg-border/80",
-        ghost: "hover:bg-background hover:text-primary",
-        link: "text-primary underline-offset-4 hover:underline",
-        success: "bg-success text-white hover:bg-success/90",
-        alert: "bg-alert text-white hover:bg-alert/90",
-        error: "bg-error text-white hover:bg-error/90",
+        default: "bg-[#1EBCBC] text-white hover:bg-[#0A9999] shadow-md shadow-[#1EBCBC]/20",
+        destructive: "bg-[#F44336] text-white hover:bg-[#D32F2F] shadow-md shadow-[#F44336]/20",
+        outline: "border border-[#E9ECEF] bg-white text-[#333333] hover:bg-[#F8F9FA] hover:text-[#1EBCBC] hover:border-[#1EBCBC]",
+        secondary: "bg-[#F8F9FA] text-[#333333] hover:bg-[#E9ECEF]",
+        ghost: "text-[#6C757D] hover:bg-[#F8F9FA] hover:text-[#1EBCBC]",
+        link: "text-[#1EBCBC] underline-offset-4 hover:underline",
+        success: "bg-[#4CAF50] text-white hover:bg-[#388E3C] shadow-md shadow-[#4CAF50]/20",
+        alert: "bg-[#FF9800] text-white hover:bg-[#F57C00] shadow-md shadow-[#FF9800]/20",
+        error: "bg-[#F44336] text-white hover:bg-[#D32F2F] shadow-md shadow-[#F44336]/20",
       },
       size: {
         default: "h-10 px-4 py-2",

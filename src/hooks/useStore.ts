@@ -15,7 +15,7 @@ import {
 
 export type ExportStatus = "idle" | "generating" | "success" | "error"
 
-interface AuthStreamState {
+interface PrioriAIState {
   patient: Patient | null
   order: Order | null
   note: Note | null
@@ -54,7 +54,7 @@ const initialState = {
   isOnline: navigator.onLine,
 }
 
-export const useStore = create<AuthStreamState>((set, get) => ({
+export const useStore = create<PrioriAIState>((set, get) => ({
   ...initialState,
 
   setPatient: (patient) => {
@@ -115,9 +115,10 @@ export function initializeMockData() {
   const store = useStore.getState()
 
   // Don't initialize if already has data
-  if (store.note || store.suggestions.length > 0) return
+  if (store.note) return
 
   store.setNote(mockClinicalNote)
-  store.setSuggestions(mockSuggestions)
+  // Don't initialize suggestions by default - let them be loaded by the analysis
+  // store.setSuggestions(mockSuggestions)
   store.setDraft(mockDraftLetter)
 }

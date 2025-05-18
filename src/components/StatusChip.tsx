@@ -10,11 +10,10 @@ interface StatusChipProps {
 export function StatusChip({ status, label, className }: StatusChipProps) {
   const statusColor = getStatusColor(status)
 
-  const StatusIcon = {
-    success: CheckCircle,
-    warning: AlertCircle,
-    error: XCircle,
-  }[status]
+  // Define the icon component based on status
+  let StatusIcon = CheckCircle
+  if (status === "warning") StatusIcon = AlertCircle
+  if (status === "error") StatusIcon = XCircle
 
   return (
     <div

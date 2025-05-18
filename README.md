@@ -1,4 +1,4 @@
-# AuthStream AI
+# Priori AI
 
 A modern, responsive frontend for a healthcare AI app designed to streamline clinical prior authorization.
 
@@ -31,8 +31,8 @@ A modern, responsive frontend for a healthcare AI app designed to streamline cli
 1. Clone the repository:
 
 \`\`\`bash
-git clone https://github.com/your-username/authstream-ai.git
-cd authstream-ai
+git clone https://github.com/your-username/priori-ai.git
+cd priori-ai
 \`\`\`
 
 2. Install dependencies:
