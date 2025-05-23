@@ -42,7 +42,7 @@ Our innovative architecture consists of:
 
 ## Real-World Example
 
-Priori AI significantly improves the prior authorization process for procedures like Myocardial Perfusion Imaging. What is typically an opaque, error-prone process with frequent dead ends becomes automated, clear, and completed in seconds.
+Priori AI significantly improves the prior authorization process for procedures like Myocardial Perfusion Imaging which can be very expensive for patients. What is typically an opaque, error-prone process with frequent dead ends becomes automated, clear, and completed in seconds.
 
 ## Benefits
 
